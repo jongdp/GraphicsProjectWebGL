@@ -1,0 +1,64 @@
+<!-- Last edited by Jonathan Garcia de Paz 2025 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body onload="main()">
+    <!-- WebGL Utility Scripts -->
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils-cs351.js"></script>
+    <script src="lib/cuon-algebra-cs351.js"></script>
+
+    <!-- Load our terrain class definitions -->
+    <script src="terrain.js"></script>
+
+    <!-- Select a JavaScript file -->
+    <script src="project2.js"></script>
+
+    <!-- Setup the Canvas -->
+    <canvas id="canvas" width="600" height="600">
+        Please use a browser that supports "canvas"
+    </canvas>
+
+    <!-- Explanation of camera controls -->
+    <p>
+        Controls for camera movement:
+        <br>
+        <strong>W / S:</strong> move forward / backward<br>
+        <strong>A / D:</strong> move left / right<br>
+        <strong>R / F:</strong> move up / down
+    </p>
+
+    <p>
+        Controls for camera rotation (Use the arrow keys): 
+        <br>
+        <strong>Up / Down Arrow:</strong> look up / down (pitch)<br>
+        <strong>Left / Right Arrow:</strong> turn left / right (yaw)
+        
+    </p>
+
+    <!-- Explanation of the slider -->
+    <p>
+        This slider moves the python on one axis (z-axis)
+    </p>
+
+    <!-- Slider for snake movement -->
+    <div>
+        <input type="range" id="sliderPython" min="-0.25" max="0.25" step="0.01" value="0"/>
+        <label id="PythonPos" for="sliderPython"></label>
+    </div>
+    
+    <!-- Explanation of "Change Camera" from perspective to orthographic view or vice versa -->
+    <!-- <p> -->
+        <!-- This button changes the camera from perspective to orthographic view or vice versa  -->
+    <!-- </p> -->
+
+    <!-- Button to actually change camera (from perspective to orthographic or vice versa) -->
+    <!-- <p> -->
+        <!-- <input type="button" onclick="updateCamera()" value="Change Camera"> -->
+    <!-- </p> -->
+
+</body>
+
+</html>
