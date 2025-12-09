@@ -28,9 +28,7 @@ uniform float u_SpecPower;
 uniform sampler2D u_Texture;
 uniform int       u_UseTexture;  // 1 = use u_Texture, 0 = no texture
 
-// --------------------------------------------------
-// Depth unpack helper (must match shadowmap.frag's encodeFloat)
-// --------------------------------------------------
+//// Depth unpack helper
 float decodeFloat(vec4 rgba) {
     vec4 bitShift = vec4(
         1.0 / (256.0 * 256.0 * 256.0),
@@ -41,9 +39,7 @@ float decodeFloat(vec4 rgba) {
     return dot(rgba, bitShift);
 }
 
-// --------------------------------------------------
-// Shadow computation (matches shadowmap.frag depth convention)
-// --------------------------------------------------
+// // Shadow computation 
 float computeShadowFactor(vec3 worldPos) {
     // Transform world-space position into light clip-space
     vec4 lightClip = u_LightTransform * vec4(worldPos, 1.0);
@@ -91,9 +87,7 @@ float computeShadowFactor(vec3 worldPos) {
     return lit / samples;  // 1 = fully lit, 0 = fully shadowed
 }
 
-// --------------------------------------------------
 // Main lighting calculation
-// --------------------------------------------------
 void main() {
     // Compute world-space position and normal
     vec3 worldPos    = vec3(u_World * u_Model * vec4(v_Position, 1.0));

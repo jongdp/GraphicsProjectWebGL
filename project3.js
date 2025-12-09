@@ -168,13 +168,38 @@ let g_pythonSliderZ = 0.0;
 // List of python sections in "spine order" (head → tail)
 const PYTHON_SECTIONS = [
     'Head',
-    'Section1', 'Section32', 'Section14', 'Section21', 'Section18',
-    'Section9', 'Section13', 'Section5', 'Section25', 'Section17',
-    'Section29', 'Section2', 'Section3', 'Section4', 'Section6',
-    'Section7', 'Section8', 'Section10', 'Section11', 'Section12',
-    'Section16', 'Section15', 'Section20', 'Section19', 'Section22',
-    'Section23', 'Section24', 'Section26', 'Section27', 'Section28',
-    'Section30', 'Section31'
+    'Section32',
+    'Section31',
+    'Section30',
+    'Section29',
+    'Section28',
+    'Section27',
+    'Section26',
+    'Section25',
+    'Section24',
+    'Section23',
+    'Section22',
+    'Section21',
+    'Section20',
+    'Section19',
+    'Section18',
+    'Section17',
+    'Section16',
+    'Section15',
+    'Section14',
+    'Section13',
+    'Section12',
+    'Section11',
+    'Section10',
+    'Section9',
+    'Section8',
+    'Section7',
+    'Section6',
+    'Section5',
+    'Section4',
+    'Section3',
+    'Section2',
+    'Section1'
 ];
 
 // For each python section: { offset, count, pivot }
@@ -353,7 +378,7 @@ async function loadOBJFiles() {
         g_archesTextureCoords = g_archesTextureCoords.concat(archesTextureCoords[key]);
     }
 
-    // ----- Python: keep per-section info for S-curve slither -----
+    // Python: keep per-section info for S-curve slither
     g_pythonSectionInfo = {};
     let pythonVertsOffsetRunning = 0; // in vertices
 
@@ -386,7 +411,6 @@ async function loadOBJFiles() {
         pythonVertsOffsetRunning += vertexCount;
     }
 
-    console.log('Python section info:', g_pythonSectionInfo);
     // Start our first frame
     loadImageFiles();
 }
@@ -442,8 +466,8 @@ function startRendering() {
         return;
     }
 
-    // Build a data-driven python spine order based on section pivot positions
-    buildPythonSpineOrder();
+    // (No longer building data-driven python spine order; using hard-coded PYTHON_SECTIONS instead)
+    // buildPythonSpineOrder();
 
     // build a grid model with colors
     [g_gridMesh, g_gridColors] = buildGridAttributes(1, 1, [0, 1, 0]);
@@ -1439,10 +1463,6 @@ function buildPythonSpineOrder() {
     }
 
     g_pythonSpineOrder = sorted;
-
-    console.log('Python spine order:', g_pythonSpineOrder.map(
-        n => ({ name: n, pivot: g_pythonSectionInfo[n].pivot.elements })
-    ));
 }
 
 /**

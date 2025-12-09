@@ -20,8 +20,8 @@ vec4 encodeFloat(float value) {
 void main() {
     // v_ViewPosition.z is NDC z in [-1,1] from the light's POV.
     // Map it into [0,1] so we can safely pack it.
-    float depthNDC = v_ViewPosition.z;
-    float depth01  = depthNDC * 0.5 + 0.5;
+    float depthNDC = v_ViewPosition.z; // in [-1, 1]
+    float depth01  = depthNDC * 0.5 + 0.5; // in [0, 1]
 
     gl_FragColor = encodeFloat(depth01);
     
